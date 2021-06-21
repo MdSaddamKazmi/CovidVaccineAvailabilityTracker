@@ -44,10 +44,10 @@ sap.ui.define([
 
 			this.byId("DP1").setMinDate(new Date()).setValue(this.onGetDPDate());
 
-			if (this.byId("seg").getSelectedKey() === "dis") {
-				this.getView().byId("chknext").setVisible(false);
+			// if (this.byId("seg").getSelectedKey() === "dis") {
+			// 	this.getView().byId("chknext").setVisible(false);
 
-			}
+			// }
 
 		},
 
@@ -74,15 +74,17 @@ sap.ui.define([
 		},
 
 		fnApplyFiltersAndOrdering: function (oEvent) {
-			var aSorters = [];
-
-			aSorters.push(new Sorter("available_capacity", this.bDescending));
+			var aSorters1 = [];
+			// var aSorters2 = [];
 
 			if (this.getView().byId("chknext").getSelected() === false) {
-				this.byId("table1").getBinding("items").sort(aSorters);
+				aSorters1.push(new Sorter("available_capacity", this.bDescending));
+				this.byId("table1").getBinding("items").sort(aSorters1);
 			}
 			// else {
-			// this.byId("centertable").getBinding("items").sort(aSorters);
+			// 	this.bDescending = false;
+			// 	aSorters2.push(new Sorter("date", this.bDescending));
+			// 	this.byId("table2").getBinding("items").sort(aSorters2);
 			// }
 		},
 
@@ -206,11 +208,13 @@ sap.ui.define([
 			if (this.getView().byId("chknext").getSelected()) {
 				// this.getView().byId("comboCentre").setVisible(true);
 				this.getView().byId("DP1").setVisible(false);
+				this.getView().byId("search").setText("Search Future Availibility");
 
 			} else {
 
 				// this.getView().byId("comboCentre").setVisible(false);
 				this.getView().byId("DP1").setVisible(true);
+				this.getView().byId("search").setText("Search");
 			}
 
 			// this.getView().byId("centertable").setVisible(false);
@@ -342,7 +346,6 @@ sap.ui.define([
 							"&date=" +
 							getDate(this, 0);
 
-						
 					} else if (oSegmentedButton === "pin") {
 
 						sPath = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pincode + "&date=" + getDate(this,
@@ -385,7 +388,7 @@ sap.ui.define([
 					// };
 
 					var ctr = [];
-
+					var date1;
 					// var     cntr ={
 
 					// 	    name: "",
@@ -446,7 +449,7 @@ sap.ui.define([
 											district_name: "",
 											state_name: "",
 											pincode: "",
-											date: "",
+											date: new Date(),
 											vaccine: "",
 											available_capacity_dose1: "",
 											available_capacity_dose2: "",
@@ -465,7 +468,20 @@ sap.ui.define([
 										cntr.available_capacity = data.centers[i].sessions[j].available_capacity;
 										cntr.available_capacity_dose1 = data.centers[i].sessions[j].available_capacity_dose1;
 										cntr.available_capacity_dose2 = data.centers[i].sessions[j].available_capacity_dose2;
-										cntr.date = data.centers[i].sessions[j].date;
+										// cntr.date = data.centers[i].sessions[j].date;
+										// date1 = ("\'" + data.centers[i].sessions[j].date.substr(3, 2) + "/" +
+										// 	data.centers[i].sessions[j].date.substr(0, 2) + "/" +
+										// 	data.centers[i].sessions[j].date.substr(6, 4) + "\'");
+
+										// cntr.date = new Date(parseInt(date1));
+										// date1 = new Date(date1);
+
+										// cntr.date = new Intl.DateTimeFormat('en-IN').format(date1);
+
+										cntr.date = (data.centers[i].sessions[j].date.substr(3, 2) + "/" +
+											data.centers[i].sessions[j].date.substr(0, 2) + "/" +
+											data.centers[i].sessions[j].date.substr(6, 4));
+
 										cntr.vaccine = data.centers[i].sessions[j].vaccine;
 										cntr.min_age_limit = data.centers[i].sessions[j].min_age_limit;
 
@@ -476,11 +492,27 @@ sap.ui.define([
 
 								}
 
-								if (p === 12) {
+								if (p === 8) {
 
 									// $.extend(arr, ctr);
 									//that.getOwnerComponent().getModel("local").setProperty("/centreData", arr.centers);
+									// that.getView().byId("table2").setVisible(true);
+
+									// ctr.sort(function (a, b) {
+									// 	return parseFloat(a.date) - parseFloat(b.date);
+									// });
+
+									ctr.sort(function (a, b) {
+										var dateA = new Date(a.date),
+											dateB = new Date(b.date);
+										return dateA - dateB;
+									});
+
 									that.getOwnerComponent().getModel("local").setProperty("/centreData", ctr);
+
+									that.onSelectCheckbox();
+									// if (oSegmentedButton !== "available") {
+									that.fnApplyFiltersAndOrdering();
 
 									var ocontact_data_Model = new sap.ui.model.json.JSONModel();
 									ocontact_data_Model.setData("local");
@@ -541,7 +573,7 @@ sap.ui.define([
 						// 	}
 
 					}
-					while (n < 102);
+					while (n < 56);
 
 					// this.getView().byId("table1").setVisible(false);
 					// this.getView().byId("centertable").setVisible(true);
@@ -616,11 +648,11 @@ sap.ui.define([
 
 				}
 
-				// if (this.getView().byId("chknext").getSelected() === false) {
-				this.onSelectCheckbox();
-				// if (oSegmentedButton !== "available") {
-				this.fnApplyFiltersAndOrdering();
-				// }
+				if (this.getView().byId("chknext").getSelected() === false) {
+					this.onSelectCheckbox();
+					// if (oSegmentedButton !== "available") {
+					this.fnApplyFiltersAndOrdering();
+				}
 				this.getView().byId("panel2").setExpanded(false); // "collapse the panel
 
 			}
@@ -651,13 +683,13 @@ sap.ui.define([
 			// tableData = this.getView().byId("centertable2");
 			// tableData.setModel(tableArr[0]);
 			// tableData.destroyItems(null);
-
+			this.getView().byId("chknext").setSelected(false);
 			var oSegmentedButton = this.byId("seg").getSelectedKey();
 
 			if (oSegmentedButton === "pin") {
 				this.getView().byId("combo1").setVisible(false);
 				this.getView().byId("comboDistrict").setVisible(false);
-
+				this.getView().byId("DP1").setVisible(true);
 				this.getView().byId("pin").setVisible(true);
 				this.getView().byId("pin").setValue("");
 				this.getView().byId("chknext").setVisible(true);
@@ -670,8 +702,8 @@ sap.ui.define([
 				this.getView().byId("pin").setVisible(false);
 				this.getView().byId("combo1").setValue("");
 				this.getView().byId("comboDistrict").setValue("");
-				this.getView().byId("chknext").setVisible(false);
-				this.getView().byId("chknext").setSelected(false);
+				// this.getView().byId("chknext").setVisible(false);
+				// this.getView().byId("chknext").setSelected(false);
 
 			}
 
