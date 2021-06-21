@@ -706,6 +706,13 @@ sap.ui.define([
 				// this.getView().byId("chknext").setSelected(false);
 
 			}
+			
+			if (this.getView().byId("chknext").getSelected() === true){
+				this.getView().byId("search").setText("Search Future Availibility");
+				
+			} else {
+					this.getView().byId("search").setText("Search");
+			}
 
 			this.getView().byId("table1").setVisible(false);
 			// this.getView().byId("centertable").setVisible(false);
