@@ -49,7 +49,7 @@
 												<CheckBox id="chkfree" text="Free" select="onSelectCheckbox"/>
 												<CheckBox id="chkdose1" text="Dose1" select="onSelectCheckbox"/>
 												<CheckBox id="chkdose2" text="Dose2" select="onSelectCheckbox"/>
-												<CheckBox id="chknext" text="Future Availibility" class="mySize" select="onCheckFuture"
+												<CheckBox id="chknext" text="Future Availability" class="mySize" select="onCheckFuture"
 													tooltip="On using this checkbox ,you will be able to see data for next 56 days starting from tomorrow"/>
 											</content>
 										</Panel>
