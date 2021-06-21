@@ -157,7 +157,7 @@ sap.ui.define([
 
 			if (this.getView().byId("chknext").getSelected()) {
 				this.getView().byId("DP1").setVisible(false);
-				this.getView().byId("search").setText("Search Future Availibility");
+				this.getView().byId("search").setText("Search Future Availability");
 
 			} else {
 
