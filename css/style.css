@@ -30,6 +30,13 @@ color: #E8743B
 
 }
 
+.mySize .sapMLabel{
+
+    font-weight: bold;
+    color: blue;
+}
+
+
 .myColor{
 	/*background-color: #9ACD32;*/
 	background-color: #ADD8E6;
@@ -60,6 +67,9 @@ color: #E8743B
 	
 	font-weight:bold;
 }
+
+
+
 
 .sapMListTbl  { 
 	font-weight: bold;
