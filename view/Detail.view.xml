@@ -141,7 +141,7 @@
 				<layout:flexContent>
 					<viz:Popover id="idPopOver"></viz:Popover>
 					<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" vizType='area' width="auto"
-						vizProperties="{title: {text: 'Vaccination Trend'}}">
+						vizProperties="{title: {text: 'Today's Vaccination Trend'}}">
 						<viz:dataset>
 							<viz.data:FlattenedDataset data="{local>/IndiaDetails/vaccinationDoneByTime}">
 								<viz.data:dimensions>
