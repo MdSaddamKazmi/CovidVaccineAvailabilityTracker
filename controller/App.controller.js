@@ -195,6 +195,8 @@ sap.ui.define([
 		},
 
 		onSearch: function (oEvent) {
+			this.getView().byId("busy1").setVisible(true);
+			
 			var tableArray = [];
 
 			var DP1 = this.getView().byId("DP1").getValue();
@@ -298,6 +300,7 @@ sap.ui.define([
 
 					var oPinModel = new JSONModel(sPath);
 					tableArray.push(oPinModel);
+					this.getView().byId("busy1").setVisible(false);
 					//Bind the data to the table
 					var table = this.getView().byId("table1");
 					table.setModel(tableArray[0]);
@@ -402,7 +405,7 @@ sap.ui.define([
 											dateB = new Date(b.date);
 										return dateA - dateB;
 									});
-
+								        that.getView().byId("busy1").setVisible(false);
 									that.getOwnerComponent().getModel("local").setProperty("/centreData", ctr);
 
 									that.onSelectCheckbox();
