@@ -33,6 +33,7 @@ sap.ui.define([
 		        this.getView().byId("combo1").setSelectedKey("16");
 			this.getView().byId("comboDistrict").setSelectedKey("265");
 			this.getView().byId("comboDistrict").setValue("Bangalore Urban");
+			this.onhandleChange();
 
 		},
 
