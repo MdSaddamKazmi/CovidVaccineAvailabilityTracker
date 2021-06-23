@@ -70,6 +70,9 @@
 								</Panel>
 							</FlexBox>
 						</Panel>
+					        <FlexBox justifyContent="Center" alignItems="Start">
+						   <BusyIndicator id="busy1" text="Data is loading" class="sapUiTinyMarginBottom" visible="false"/>
+						</FlexBox>
 						<Table id="table1" inset="false" items="{/sessions}" class="sapUiSizeCompact" visible="false" growing="true" growingThreshold="50">
 							<headerToolbar>
 								<OverflowToolbar>
