@@ -29,7 +29,10 @@ sap.ui.define([
 
 			this.byId("DP1").setMinDate(new Date()).setValue(this.onGetDPDate());
 
-	
+	                this.getView().byId("combo1").setValue("Karnatka");
+		        this.getView().byId("combo1").setSelectedKey("16");
+			this.getView().byId("comboDistrict").setSelectedKey("265");
+			this.getView().byId("comboDistrict").setValue("Bangalore Urban");
 
 		},
 
@@ -499,7 +502,8 @@ sap.ui.define([
 		},
 
 		onhandleChange: function (oEvent) {
-			
+			this.getView().byId("comboDistrict").setSelectedKey("");
+			this.getView().byId("comboDistrict").setValue("");
 			var stateSelected = this.getView().byId("combo1").getSelectedItem().getKey();
 			var districtPath = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/" + stateSelected;
 			var oModelDistrict = new sap.ui.model.json.JSONModel(districtPath);
