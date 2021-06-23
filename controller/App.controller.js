@@ -28,7 +28,7 @@ sap.ui.define([
 			this.bDescending = true;
 
 			this.byId("DP1").setMinDate(new Date()).setValue(this.onGetDPDate());
-			this.getView().byId("pin").setValue("560066");
+			
 	                this.getView().byId("combo1").setValue("Karnatka");
 		        this.getView().byId("combo1").setSelectedKey("16");
 			this.getView().byId("comboDistrict").setSelectedKey("265");
