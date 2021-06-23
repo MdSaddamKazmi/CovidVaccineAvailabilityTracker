@@ -506,9 +506,8 @@ sap.ui.define([
 		},
 
 		onhandleChange: function (oEvent) {
-			this.getView().byId("comboDistrict").setSelectedKey("");
-			this.getView().byId("comboDistrict").setValue("");
-			var stateSelected = this.getView().byId("combo1").getSelectedItem().getKey();
+			
+			var stateSelected = this.getView().byId("combo1").getSelectedKey();
 			var districtPath = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/" + stateSelected;
 			var oModelDistrict = new sap.ui.model.json.JSONModel(districtPath);
 			this.getView().byId("comboDistrict").setModel(oModelDistrict);
