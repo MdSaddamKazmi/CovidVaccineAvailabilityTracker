@@ -485,6 +485,10 @@ sap.ui.define([
 				this.getView().byId("pin").setVisible(false);
 				this.getView().byId("combo1").setValue("");
 				this.getView().byId("comboDistrict").setValue("");
+			        this.getView().byId("combo1").setValue("Karnatka");
+				this.getView().byId("combo1").setSelectedKey("16");
+				this.getView().byId("comboDistrict").setSelectedKey("265");
+				this.getView().byId("comboDistrict").setValue("Bangalore Urban");
 
 			}
 			
