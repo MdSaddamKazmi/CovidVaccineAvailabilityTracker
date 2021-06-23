@@ -196,7 +196,7 @@ sap.ui.define([
 		onSearch: function (oEvent) {
 			var tableArray = [];
 
-			var DP1 = this.getView().byId("DP1")._getInputValue();
+			var DP1 = this.getView().byId("DP1").getValue();
 
 			var oSegmentedButton = this.byId("seg").getSelectedKey();
 
@@ -259,7 +259,7 @@ sap.ui.define([
 
 			function getDate(that, n) {
 
-				var sDate = that.getView().byId("DP1").getDateValue();
+				var sDate = that.getView().byId("DP1").getValue();
 				var today = new Date(sDate);
 				today.setDate(today.getDate() + n);
 				var dd = today.getDate();
