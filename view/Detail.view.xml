@@ -36,7 +36,7 @@
 						<TileContent footer="Dose 1 : {local>/IndiaDetails/topBlock/vaccination/tot_dose_1}">
 							<content>
 								<microchart:HarveyBallMicroChart total="{local>/IndiaDetails/topBlock/vaccination/total_doses}" size="Responsive" alignContent="Right"
-									totalScale="Mrd">
+									totalScale="N">
 									<microchart:items>
 										<microchart:HarveyBallMicroChartItem fraction="{local>/IndiaDetails/topBlock/vaccination/tot_dose_1}" color="Good" fractionScale="Mrd"/>
 									</microchart:items>
@@ -46,7 +46,7 @@
 						<TileContent footer="Dose 2 : {local>/IndiaDetails/topBlock/vaccination/tot_dose_2}">
 							<content>
 								<microchart:HarveyBallMicroChart total="{local>/IndiaDetails/topBlock/vaccination/total_doses}" size="Responsive" alignContent="Right"
-									totalScale="Mrd">
+									totalScale="N">
 									<microchart:items>
 										<microchart:HarveyBallMicroChartItem fraction="{local>/IndiaDetails/topBlock/vaccination/tot_dose_2}" color="Good" fractionScale="Mrd"/>
 									</microchart:items>
@@ -62,7 +62,7 @@
 						<TileContent footer="Male : {local>/IndiaDetails/topBlock/vaccination/male}">
 							<content>
 								<microchart:HarveyBallMicroChart total="{local>/IndiaDetails/topBlock/vaccination/total}" size="Responsive" alignContent="Right"
-									totalScale="Mrd">
+									totalScale="N">
 									<microchart:items>
 										<microchart:HarveyBallMicroChartItem fraction="{local>/IndiaDetails/topBlock/vaccination/male}" color="Error" fractionScale="Mrd"/>
 									</microchart:items>
@@ -72,7 +72,7 @@
 						<TileContent footer="Female : {local>/IndiaDetails/topBlock/vaccination/female}">
 							<content>
 								<microchart:HarveyBallMicroChart total="{local>/IndiaDetails/topBlock/vaccination/total}" size="Responsive" alignContent="Right"
-									totalScale="Mrd">
+									totalScale="N">
 									<microchart:items>
 										<microchart:HarveyBallMicroChartItem fraction="{local>/IndiaDetails/topBlock/vaccination/female}" color="Error" fractionScale="Mrd"/>
 									</microchart:items>
@@ -141,7 +141,7 @@
 				<layout:flexContent>
 					<viz:Popover id="idPopOver"></viz:Popover>
 					<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" vizType='area' width="auto"
-						vizProperties="{title: {text: 'Current Vaccination Trend'}}">
+						vizProperties="{title: {text: 'Vaccination Trend :Today'}}">
 						<viz:dataset>
 							<viz.data:FlattenedDataset data="{local>/IndiaDetails/vaccinationDoneByTime}">
 								<viz.data:dimensions>
